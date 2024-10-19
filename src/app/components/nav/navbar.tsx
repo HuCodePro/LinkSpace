@@ -7,7 +7,7 @@ function Navbar() {
 
     // Navigation items
     const navigation = [
-        { title: "Souscription", path: "javascript:void(0)" },
+        { title: "Souscription", path: "Souscription" },
         { title: "Contact", path: "javascript:void(0)" },
         { title: "Pro", path: "/Pro" }
     ]

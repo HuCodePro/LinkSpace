@@ -1,4 +1,5 @@
 import React from 'react'
+import Rainbowbutton from '../button/rainbowButton';
 
 function Cardhome() {
     const posts = [
@@ -39,10 +40,14 @@ function Cardhome() {
                                             </h3>
                                         </div>
                                     </a>
+                                    
                                 </li>
                             ))
                         }
                     </ul>
+                    <div className='flex mt-10 justify-center'>
+                        <Rainbowbutton/>
+                        </div>
                 </div>
             </section>
         </div>

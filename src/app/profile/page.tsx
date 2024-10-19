@@ -1,11 +1,13 @@
 import React from 'react';
+import BarProfile from './components/barProfile';
 import Navbar from '../components/nav/navbar';
+
 
 const Page = () => {
     return (
         <div>
-            <Navbar />
-            <h1>Page entiere dedie a intro souscrire et pro</h1>
+            <Navbar/>
+        <BarProfile />
         </div>
     );
 }
