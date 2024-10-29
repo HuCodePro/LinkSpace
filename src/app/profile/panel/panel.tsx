@@ -1,6 +1,18 @@
 "use client"
 
 import React from 'react';
+import { Button } from "@/components/ui/button"
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import {
     Card,
     CardHeader,
@@ -17,6 +29,7 @@ import {
     ChartTooltipContent,
 } from "@/components/ui/chart";
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
+import { Textarea } from '@/components/ui/textarea';
 
 const contractCount = 55;
 const invoiceCount = 99;
@@ -170,7 +183,31 @@ const Panel = () => {
                             <div>
                                 <p className="text-sm font-medium">{employee.name}</p>
                                 <p className="text-xs text-gray-500">{employee.position}</p>
-                                <button className="text-blue-500 text-xs">Envoyer une notification</button>
+                                <Dialog>
+                                    <DialogTrigger asChild>
+                                        <button className="text-blue-500 text-xs">Envoyer une notification</button>
+                                    </DialogTrigger>
+                                    <DialogContent className="sm:max-w-[425px]">
+                                        <DialogHeader>
+                                            <DialogTitle>Envoyer un message a {employee.name}</DialogTitle>
+                                            <DialogDescription>
+                                                Le message sera envoyé directement dans les notidications  de {employee.name}
+                                            </DialogDescription>
+                                        </DialogHeader>
+                                        <div className="grid gap-4 py-4">
+                                            <div className="grid grid-cols-4 items-center gap-4">
+                                                <Label htmlFor="name" className="text-right">
+                                                    Votre message
+                                                </Label>
+                                                <Textarea id="name" value="Pedro Duarte" className="col-span-3" />
+                                            </div>
+
+                                        </div>
+                                        <DialogFooter>
+                                            <Button type="submit">Envoyer le message</Button>
+                                        </DialogFooter>
+                                    </DialogContent>
+                                </Dialog>
                             </div>
 
                             <button className="text-blue-500 text-xs">Gérer</button>
