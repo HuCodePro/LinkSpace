@@ -5,6 +5,11 @@ import BarProfile from './components/barProfile';
 import Navbar from '../components/nav/navbar';
 import PageInfo from './info/page'; 
 import Panel from './panel/panel';
+import SubscriptionPage from './sub/Sub';
+import InvoicePage from './factures/Factures';
+import SecurityPage from './secuCompte/page';
+import NotificationPage from './notification/page';
+import SupportPage from './supportClient/page';
 
 
 const Page = () => {
@@ -17,15 +22,15 @@ const Page = () => {
             case 'panel':
                 return <Panel />
             case 'abonnements':
-                return <p>Voici vos abonnements...</p>;
+                return <SubscriptionPage />;
             case 'factures':
-                return <p>Voici vos factures...</p>;
+                return <InvoicePage />;
             case 'securite':
-                return <p>Voici les paramètres de sécurité de votre compte...</p>;
+                return <SecurityPage />;
             case 'notifications':
-                return <p>Voici vos notifications...</p>;
+                return <NotificationPage />;
             case 'support':
-                return <p>Voici le support client...</p>;
+                return <SupportPage />;
             default:
                 return <p>Veuillez sélectionner une section...</p>;
         }

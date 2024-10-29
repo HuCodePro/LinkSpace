@@ -24,21 +24,21 @@ const totalRevenue = 18658;
 const employeeCount = 12;
 
 const chartData = [
-    { month: "January", desktop: 186, mobile: 80 },
-    { month: "February", desktop: 305, mobile: 200 },
-    { month: "March", desktop: 237, mobile: 120 },
-    { month: "April", desktop: 73, mobile: 190 },
-    { month: "May", desktop: 209, mobile: 130 },
-    { month: "June", desktop: 214, mobile: 140 },
+    { month: "January", signed: 20, canceled: 5 },
+    { month: "February", signed: 25, canceled: 3 },
+    { month: "March", signed: 30, canceled: 6 },
+    { month: "April", signed: 35, canceled: 4 },
+    { month: "May", signed: 40, canceled: 8 },
+    { month: "June", signed: 50, canceled: 7 },
 ];
 
 const chartConfig = {
-    desktop: {
-        label: "Desktop",
+    signed: {
+        label: "Contrats signés",
         color: "hsl(var(--chart-1))",
     },
-    mobile: {
-        label: "Mobile",
+    canceled: {
+        label: "Contrats annulés",
         color: "hsl(var(--chart-2))",
     },
 } satisfies ChartConfig;
@@ -95,12 +95,12 @@ const Panel = () => {
                 </Card>
             </div>
 
-            {/* Graphique avec shadcn/ui */}
+            {/* Graphique avec les statistiques des contrats signés et annulés */}
             <Card className="w-full shadow-md mb-6">
                 <CardHeader>
-                    <CardTitle>Area Chart - Stacked</CardTitle>
+                    <CardTitle>Statistiques des Contrats</CardTitle>
                     <CardDescription>
-                        Showing total visitors for the last 6 months
+                        Evolution des contrats signés et annulés pour les 6 derniers mois
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -126,19 +126,19 @@ const Panel = () => {
                                 content={<ChartTooltipContent indicator="dot" />}
                             />
                             <Area
-                                dataKey="mobile"
+                                dataKey="canceled"
                                 type="natural"
-                                fill="var(--color-mobile)"
+                                fill="var(--color-canceled)"
                                 fillOpacity={0.4}
-                                stroke="var(--color-mobile)"
+                                stroke="var(--color-canceled)"
                                 stackId="a"
                             />
                             <Area
-                                dataKey="desktop"
+                                dataKey="signed"
                                 type="natural"
-                                fill="var(--color-desktop)"
+                                fill="var(--color-signed)"
                                 fillOpacity={0.4}
-                                stroke="var(--color-desktop)"
+                                stroke="var(--color-signed)"
                                 stackId="a"
                             />
                         </AreaChart>
@@ -148,10 +148,10 @@ const Panel = () => {
                     <div className="flex w-full items-start gap-2 text-sm">
                         <div className="grid gap-2">
                             <div className="flex items-center gap-2 font-medium leading-none">
-                                Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+                                Tendance à la hausse de 5.2% ce mois <TrendingUp className="h-4 w-4" />
                             </div>
                             <div className="flex items-center gap-2 leading-none text-muted-foreground">
-                                January - June 2024
+                                Janvier - Juin 2024
                             </div>
                         </div>
                     </div>

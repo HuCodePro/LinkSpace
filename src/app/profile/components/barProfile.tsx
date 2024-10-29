@@ -2,7 +2,7 @@ import React from 'react';
 
 const BarProfile = ({ setSelectedSection }) => {
     return (
-        <div className='w-[200px] h-screen bg-gray-50 justify-content-center text-center'>
+        <div className='w-[200px]  h-screen bg-gray-50 justify-content-center text-center'>
             <p className='uppercase mt-5'>Votre Compte</p>
             <div id='element-list'>
                 <ul>
@@ -28,7 +28,7 @@ const BarProfile = ({ setSelectedSection }) => {
                         className='uppercase m-5 cursor-pointer text-[#1E40AF]'
                         onClick={() => setSelectedSection('factures')}
                     >
-                        Mes factures
+                        Mes factures (PRO)
                     </li>
                     <li
                         className='uppercase m-5 cursor-pointer text-[#1E40AF]'
