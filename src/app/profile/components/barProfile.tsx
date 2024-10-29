@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const BarProfile = ({ setSelectedSection }) => {
     return (
-        <div className='w-[200px] h-full bg-gray-50 justify-content-center text-center'>
+        <div className='w-[200px] h-screen bg-gray-50 justify-content-center text-center'>
             <p className='uppercase mt-5'>Votre Compte</p>
             <div id='element-list'>
                 <ul>
@@ -48,7 +48,9 @@ const BarProfile = ({ setSelectedSection }) => {
                     >
                         Support client
                     </li>
-                    <li className='uppercase m-5 cursor-pointer text-red-700'>Déconnexion</li>
+                    <li className='uppercase m-5 cursor-pointer text-red-700'>
+                        Déconnexion
+                    </li>
                 </ul>
             </div>
         </div>

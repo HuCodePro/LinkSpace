@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import BarProfile from './components/barProfile';
 import Navbar from '../components/nav/navbar';
 import PageInfo from './info/page'; 
+import Panel from './panel/panel';
 
 
 const Page = () => {
@@ -14,7 +15,7 @@ const Page = () => {
             case 'info':
                 return <PageInfo />;
             case 'panel':
-                return <p>Voici le Panel PRO...</p>;
+                return <Panel />
             case 'abonnements':
                 return <p>Voici vos abonnements...</p>;
             case 'factures':
