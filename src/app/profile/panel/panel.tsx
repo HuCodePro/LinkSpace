@@ -170,7 +170,9 @@ const Panel = () => {
                             <div>
                                 <p className="text-sm font-medium">{employee.name}</p>
                                 <p className="text-xs text-gray-500">{employee.position}</p>
+                                <button className="text-blue-500 text-xs">Envoyer une notification</button>
                             </div>
+
                             <button className="text-blue-500 text-xs">Gérer</button>
                         </li>
                     ))}

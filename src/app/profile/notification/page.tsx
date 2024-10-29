@@ -9,7 +9,7 @@ import {
     CardFooter,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, AlertTriangle } from "lucide-react"; // Icônes pour les notifications
+import { CheckCircle, AlertTriangle, MessageCircleCode, MessageCircleDashed } from "lucide-react"; // Icônes pour les notifications
 
 const notifications = [
     {
@@ -31,10 +31,22 @@ const notifications = [
         type: "success",
     },
     {
+        id: 3,
+        message: "Nouveau Message d'un employée",
+        date: "2024-10-25",
+        type: "message",
+    },
+    {
         id: 4,
         message: "Échec du paiement de la facture de 30€.",
         date: "2024-10-24",
         type: "error",
+    },
+    {
+        id: 5,
+        message: "Votre employee Marie Curie a envoyer un Contrat de 80 € a l'entreprise Ampère",
+        date: "2024-10-24",
+        type: "contrat",
     },
 ];
 
@@ -50,9 +62,14 @@ const NotificationPage = () => {
                         <CardHeader>
                             <CardTitle className="flex items-center">
                                 {notification.type === "success" && <CheckCircle className="mr-2 text-green-500" />}
+                                {notification.type === "message" && <MessageCircleDashed className="mr-2 text-blue-500" />}
+                                {notification.type === "contrat" && <CheckCircle className="mr-2 text-black" />}
                                 {notification.type === "error" && <AlertTriangle className="mr-2 text-red-500" />}
-                                {notification.message}
+                                <p>  {notification.message}</p> 
+
                             </CardTitle>
+                            {notification.type === "contrat" && <p className='hover:underline cursor-pointer'>voir le contract</p>}
+                            {notification.type === "message" && <p className='hover:underline cursor-pointer'>voir le message</p>}
                         </CardHeader>
                         <CardContent>
                             <p className="text-xs text-gray-500">Date : {notification.date}</p>
