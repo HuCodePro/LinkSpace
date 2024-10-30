@@ -1,6 +1,5 @@
 import Cardhome from "./components/card/cardHome";
 import Navbar from "./components/nav/navbar";
-import Fliptext from "./components/text/fliptext";
 import GridPattern from "./components/ui/animated-grid-pattern";
 
 export default function Home() {
@@ -18,7 +17,7 @@ export default function Home() {
         {/* Conteneur avec flou */}
         <div className="space-y-5 w-full mx-auto text-center bg-white/5 backdrop-blur-lg p-2 rounded-3xl">
               <p className="text-white font-extrabold mx-auto md:text-5xl w-full">
-                <Fliptext />
+                Forgez un espace de travail avec LinkSpace
               </p>
               <h3 className="text-4xl max-w-2xl mx-auto text-gray-200">
                 La productivité de votre entreprise va accroître grâce au confort de LinkSpace
