@@ -31,6 +31,8 @@ import {
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
 import { Textarea } from '@/components/ui/textarea';
 
+  
+
 const contractCount = 55;
 const invoiceCount = 99;
 const totalRevenue = 18658;

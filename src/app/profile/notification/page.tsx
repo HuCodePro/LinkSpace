@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Card,
     CardHeader,
@@ -8,8 +8,17 @@ import {
     CardContent,
     CardFooter,
 } from "@/components/ui/card";
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
 import { Button } from "@/components/ui/button";
-import { CheckCircle, AlertTriangle, MessageCircleCode, MessageCircleDashed } from "lucide-react"; // Icônes pour les notifications
+import { CheckCircle, AlertTriangle, MessageCircleCode, MessageCircleDashed } from "lucide-react"; // Icons for notifications
 
 const notifications = [
     {
@@ -17,6 +26,7 @@ const notifications = [
         message: "Paiement de facture de 50€ réussi.",
         date: "2024-10-28",
         type: "success",
+        cat : "paiment"
     },
     {
         id: 2,
@@ -29,35 +39,59 @@ const notifications = [
         message: "Nouveau collaborateur ajouté : Marie Curie.",
         date: "2024-10-25",
         type: "success",
-    },
-    {
-        id: 3,
-        message: "Nouveau Message d'un employée",
-        date: "2024-10-25",
-        type: "message",
+        cat : "info"
     },
     {
         id: 4,
-        message: "Échec du paiement de la facture de 30€.",
-        date: "2024-10-24",
-        type: "error",
+        message: "Nouveau Message d'un employée",
+        date: "2024-10-25",
+        type: "message",
+        cat : "message"
     },
     {
         id: 5,
-        message: "Votre employee Marie Curie a envoyer un Contrat de 80 € a l'entreprise Ampère",
+        message: "Échec du paiement de la facture de 30€.",
+        date: "2024-10-24",
+        type: "error",
+        cat : "paiment"
+    },
+    {
+        id: 6,
+        message: "Votre employée Marie Curie a envoyé un Contrat de 80 € à l'entreprise Ampère",
         date: "2024-10-24",
         type: "contrat",
+        cat : "contrat"
     },
 ];
 
 const NotificationPage = () => {
+    const [selectedCategory, setSelectedCategory] = useState("all");
+
+    // Filter notifications based on selected category
+    const filteredNotifications = selectedCategory === "all"
+        ? notifications
+        : notifications.filter(notification => notification.cat === selectedCategory);
+
     return (
         <div className="min-h-screen bg-gray-100 flex flex-col p-6">
             <h1 className="text-2xl font-semibold mb-4">Mes Notifications</h1>
+            
+            <Select onValueChange={(value) => setSelectedCategory(value)}>
+                <SelectTrigger className="w-[180px] m-5">
+                    <SelectValue placeholder="Tout" />
+                </SelectTrigger>
+                <SelectContent>
+                    <SelectItem value="all">Tout</SelectItem>
+                    <SelectItem value="message">Message</SelectItem>
+                    <SelectItem value="contrat">Contrats</SelectItem>
+                    <SelectItem value="info">Info Employées</SelectItem>
+                    <SelectItem value="paiment">Paiment</SelectItem>
+                </SelectContent>
+            </Select>
 
-            {/* Liste des notifications */}
+            {/* Notification List */}
             <div className="space-y-4">
-                {notifications.map(notification => (
+                {filteredNotifications.map(notification => (
                     <Card key={notification.id} className="w-full shadow-md">
                         <CardHeader>
                             <CardTitle className="flex items-center">
@@ -65,10 +99,9 @@ const NotificationPage = () => {
                                 {notification.type === "message" && <MessageCircleDashed className="mr-2 text-blue-500" />}
                                 {notification.type === "contrat" && <CheckCircle className="mr-2 text-black" />}
                                 {notification.type === "error" && <AlertTriangle className="mr-2 text-red-500" />}
-                                <p>  {notification.message}</p> 
-
+                                <p>{notification.message}</p> 
                             </CardTitle>
-                            {notification.type === "contrat" && <p className='hover:underline cursor-pointer'>voir le contract</p>}
+                            {notification.type === "contrat" && <p className='hover:underline cursor-pointer'>voir le contrat</p>}
                             {notification.type === "message" && <p className='hover:underline cursor-pointer'>voir le message</p>}
                         </CardHeader>
                         <CardContent>

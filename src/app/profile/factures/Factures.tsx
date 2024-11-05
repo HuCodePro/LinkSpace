@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Card,
     CardHeader,
@@ -8,8 +8,15 @@ import {
     CardContent,
     CardFooter,
 } from "@/components/ui/card";
+
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { TrendingUp } from "lucide-react";
 
 const invoiceList = [
     { id: 1, date: '2024-10-01', amount: 150, status: 'Payée' },
@@ -22,12 +29,19 @@ const totalInvoices = invoiceList.length;
 const totalRevenue = invoiceList.reduce((acc, invoice) => acc + invoice.amount, 0);
 
 const InvoicePage = () => {
+    const [selectedStatus, setSelectedStatus] = useState("all");
+
+ 
+    const filteredInvoices = selectedStatus === "all"
+        ? invoiceList
+        : invoiceList.filter(invoice => invoice.status === selectedStatus);
+
     return (
         <div className="min-h-screen bg-gray-100 flex flex-col p-6">
             <h1 className="text-2xl font-semibold mb-4">Mes Factures</h1>
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 mb-6">
-                {/* Carte : Nombre de Factures */}
+                {/* Card: Number of Invoices */}
                 <Card className="w-full shadow-md">
                     <CardHeader>
                         <CardTitle className="text-2xl">{totalInvoices}</CardTitle>
@@ -37,7 +51,7 @@ const InvoicePage = () => {
                     </CardContent>
                 </Card>
 
-                {/* Carte : Chiffre d'affaires Total */}
+                {/* Card: Total Revenue */}
                 <Card className="w-full shadow-md">
                     <CardHeader>
                         <CardTitle className="text-2xl">{totalRevenue}€</CardTitle>
@@ -48,9 +62,23 @@ const InvoicePage = () => {
                 </Card>
             </div>
 
-            {/* Liste des factures */}
+            {/* Invoice List */}
             <div className="bg-white p-4 rounded-lg shadow-md flex-grow">
                 <h2 className="text-lg font-semibold mb-4">Liste des Factures</h2>
+                
+                {/* Filter Dropdown */}
+                <Select onValueChange={(value) => setSelectedStatus(value)}>
+                    <SelectTrigger className="w-[180px] mb-4">
+                        <SelectValue placeholder="Filtrer par statut" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="all">Tout</SelectItem>
+                        <SelectItem value="Payée">Payée</SelectItem>
+                        <SelectItem value="En attente">En attente</SelectItem>
+                        <SelectItem value="Annulée">Annulée</SelectItem>
+                    </SelectContent>
+                </Select>
+
                 <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">
                         <tr>
@@ -61,7 +89,7 @@ const InvoicePage = () => {
                         </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
-                        {invoiceList.map(invoice => (
+                        {filteredInvoices.map(invoice => (
                             <tr key={invoice.id}>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{invoice.date}</td>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{invoice.amount}€</td>
