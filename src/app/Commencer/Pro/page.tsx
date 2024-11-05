@@ -1,12 +1,11 @@
+import Footer from '@/app/components/footer/footer';
+import Navbar from '@/app/components/nav/navbar';
 import React from 'react';
-import Navbar from '../components/nav/navbar';
-import { Footer } from 'react-day-picker';
 
 const Page = () => {
     return (
         <div>
-            <Navbar />
-            
+            <Navbar/>
             <Footer/>
         </div>
     );

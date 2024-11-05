@@ -7,7 +7,7 @@ function Navbar() {
 
     // Navigation items
     const navigation = [
-        { title: "Souscription", path: "Souscription" },
+        { title: "Souscription", path: "/Souscription" },
         { title: "Contact", path: "javascript:void(0)" },
         { title: "Pro", path: "/Pro" }
     ]
@@ -20,9 +20,9 @@ function Navbar() {
     }, [])
 
     return (
-        <nav className={`bg-white md:text-sm shadow-3xl ${state ? "shadow-2xl rounded-xl border mx-2 mt-2 md:shadow-none md:border-none md:mx-2 md:mt-0" : ""}`}>
-            <div className="gap-x-14 ml-40 items-center width-full mx-auto px-4 md:flex md:px-8">
-                <div className="flex items-center justify-between py-2 md:block">
+        <nav className={`bg-white z-30 md:text-sm shadow-3xl ${state ? "shadow-2xl rounded-xl border mx-2 mt-2 md:shadow-none md:border-none md:mx-2 md:mt-0" : ""}`}>
+            <div className="gap-x-14  ml-40 items-center width-full mx-auto px-4 md:flex md:px-8">
+                <div className="flex  items-center justify-between py-2 md:block">
                     <a href="/">
                         <img
                             src="/assets/images/logo.png"
@@ -61,13 +61,13 @@ function Navbar() {
                                     className="absolute divide-y divide-gray-300 rounded-lg bg-white shadow-lg text-sm w-64 mt-2"
                                 >
                                     <div className="p-3">
-                                        <a className="block text-black hover:text-blue-600 rounded-lg py-2 px-3 hover:bg-blue-100" href="#">
+                                        <a className="block text-black hover:text-blue-600 rounded-lg py-2 px-3 hover:bg-blue-100" href="/Commencer/Introduction">
                                             <p className="font-semibold">Introduction</p>
                                         </a>
-                                        <a className="block text-black hover:text-blue-600 rounded-lg py-2 px-3 hover:bg-blue-100" href="#">
+                                        <a className="block text-black hover:text-blue-600 rounded-lg py-2 px-3 hover:bg-blue-100" href="/Commencer/Souscrire">
                                             <p className="font-semibold">Souscrire</p>
                                         </a>
-                                        <a className="block text-black hover:text-blue-600 rounded-lg py-2 px-3 hover:bg-blue-100" href="#">
+                                        <a className="block text-black hover:text-blue-600 rounded-lg py-2 px-3 hover:bg-blue-100" href="/Commencer/Pro">
                                             <p className="font-semibold">Pro</p>
                                         </a>
                                     </div>

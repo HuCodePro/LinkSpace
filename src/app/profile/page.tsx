@@ -10,6 +10,7 @@ import InvoicePage from './factures/Factures';
 import SecurityPage from './secuCompte/page';
 import NotificationPage from './notification/page';
 import SupportPage from './supportClient/page';
+import Footer from '../components/footer/footer';
 
 
 const Page = () => {
@@ -45,6 +46,7 @@ const Page = () => {
                     {renderSection()}
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 }

@@ -13,7 +13,7 @@ function PopOver() {
         <PopoverPanel
           transition
           anchor="bottom"
-          className="divide-y divide-white/5 rounded-xl bg-white/5 text-sm/6 transition duration-200 ease-in-out [--anchor-gap:var(--spacing-5)] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
+          className=" divide-y divide-white/5 rounded-xl bg-white/5 text-sm/6 transition duration-200 ease-in-out [--anchor-gap:var(--spacing-5)] data-[closed]:-translate-y-1 data-[closed]:opacity-0"
         >
           <div className="p-3">
             <a className="block rounded-lg py-2 px-3 transition hover:bg-white/5" href="#">

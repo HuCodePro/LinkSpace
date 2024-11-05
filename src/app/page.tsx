@@ -1,11 +1,13 @@
 import Cardhome from "./components/card/cardHome";
+import Footer from "./components/footer/footer";
 import Navbar from "./components/nav/navbar";
 import GridPattern from "./components/ui/animated-grid-pattern";
 
 export default function Home() {
   return (
 <div className="relative bg-blue-200 min-h-screen">
-  <div className="z-20 relative">
+  <div className="z-40 relative">
+    
     <Navbar />
   </div>
 
@@ -28,6 +30,7 @@ export default function Home() {
       </div>
     </section>
   </div>
+  <Footer/>
 </div>
 
   );
