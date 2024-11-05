@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+
 import {
     Card,
     CardHeader,
@@ -21,17 +22,72 @@ import {
     CardFooter,
     CardDescription,
 } from "@/components/ui/card";
-import { TrendingUp } from "lucide-react";
+import { TrendingUp } from "lucide-react"; import {
+    Cloud,
+    CreditCard,
+    Github,
+    Keyboard,
+    LifeBuoy,
+    LogOut,
+    Mail,
+    MessageSquare,
+    Plus,
+    PlusCircle,
+    Settings,
+    User,
+    UserPlus,
+    Users,
+} from "lucide-react"
+
+
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuGroup,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuPortal,
+    DropdownMenuSeparator,
+    DropdownMenuShortcut,
+    DropdownMenuSub,
+    DropdownMenuSubContent,
+    DropdownMenuSubTrigger,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import {
+    Drawer,
+    DrawerClose,
+    DrawerContent,
+    DrawerDescription,
+    DrawerFooter,
+    DrawerHeader,
+    DrawerTitle,
+    DrawerTrigger,
+} from "@/components/ui/drawer"
+
 import {
     ChartConfig,
     ChartContainer,
     ChartTooltip,
     ChartTooltipContent,
 } from "@/components/ui/chart";
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select"
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
 import { Textarea } from '@/components/ui/textarea';
+import Permission from './components/permission';
+import Historique from './components/historique';
+import Tache from './components/tache';
+import SupprimerUser from './components/SupprEmploye';
 
-  
+
 
 const contractCount = 55;
 const invoiceCount = 99;
@@ -50,7 +106,7 @@ const chartData = [
 const chartConfig = {
     signed: {
         label: "Contrats signés",
-        color: "hsl(var(--chart-1))",
+        color: "hsl(var(--chart-1)",
     },
     canceled: {
         label: "Contrats annulés",
@@ -212,7 +268,17 @@ const Panel = () => {
                                 </Dialog>
                             </div>
 
-                            <button className="text-blue-500 text-xs">Gérer</button>
+                            <DropdownMenu>
+                                <DropdownMenuTrigger>Gérer</DropdownMenuTrigger>
+                                <DropdownMenuContent>
+
+                                   <Permission />
+                                    <Historique />
+                                    <Tache />
+                                    <SupprimerUser/>
+                                 </DropdownMenuContent>
+                            </DropdownMenu>
+
                         </li>
                     ))}
                 </ul>
