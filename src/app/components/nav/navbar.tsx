@@ -20,7 +20,7 @@ function Navbar() {
     }, [])
 
     return (
-        <nav className={`bg-white z-30 md:text-sm shadow-3xl ${state ? "shadow-2xl rounded-xl border mx-2 mt-2 md:shadow-none md:border-none md:mx-2 md:mt-0" : ""}`}>
+        <nav className={`bg-white z-30 md:text-sm shadow-xl ${state ? "shadow-2xl rounded-xl border mx-2 mt-2 md:shadow-none md:border-none md:mx-2 md:mt-0" : ""}`}>
             <div className="gap-x-14  ml-40 items-center width-full mx-auto px-4 md:flex md:px-8">
                 <div className="flex  items-center justify-between py-2 md:block">
                     <a href="/">
