@@ -8,8 +8,8 @@ function Navbar() {
     // Navigation items
     const navigation = [
         { title: "Souscription", path: "/Souscription" },
-        { title: "Contact", path: "javascript:void(0)" },
-        { title: "Pro", path: "/Pro" }
+        { title: "Contact", path: "/Contact" },
+        { title: "FAQ", path: "/Faq" }
     ]
 
     useEffect(() => {
@@ -65,10 +65,10 @@ function Navbar() {
                                             <p className="font-semibold">Introduction</p>
                                         </a>
                                         <a className="block text-black hover:text-blue-600 rounded-lg py-2 px-3 hover:bg-blue-100" href="/Commencer/Souscrire">
-                                            <p className="font-semibold">Souscrire</p>
+                                            <p className="font-semibold">Pourquoi souscrire ?</p>
                                         </a>
-                                        <a className="block text-black hover:text-blue-600 rounded-lg py-2 px-3 hover:bg-blue-100" href="/Commencer/Pro">
-                                            <p className="font-semibold">Pro</p>
+                                        <a className="block text-black hover:text-blue-600 rounded-lg py-2 px-3 hover:bg-blue-100" href="/Faq">
+                                            <p className="font-semibold">FAQ</p>
                                         </a>
                                     </div>
                                 </PopoverPanel>
@@ -93,7 +93,7 @@ function Navbar() {
                         Se connecter
                     </a>
                     <a href="/signup" className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-blue-800 hover:bg-blue-600 active:bg-gray-900 rounded-full md:inline-flex">
-                        Sinscrire
+                        S inscrire
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
                             <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
                         </svg>
