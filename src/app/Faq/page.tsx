@@ -1,16 +1,13 @@
-"use client"
 import React from 'react';
 import Navbar from '../components/nav/navbar';
 import Footer from '../components/footer/footer';
-
+import FAQ from '../components/faq/Faq';
 
 const Page = () => {
     return (
         <div>
-            <Navbar />
-            <h1>test</h1>
-
-            <h1>Entreprise Pro</h1>
+            <Navbar/>
+            <div className='mt-20'><FAQ/></div>
             <Footer/>
         </div>
     );

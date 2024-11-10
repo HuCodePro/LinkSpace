@@ -7,7 +7,7 @@ const Page = () => {
     return (
         <div>
             <Navbar/>
-            <h1>Souscrire</h1>
+            <h1 className='text-black text-2xl'>Avantages</h1>
             <Footer/>
         </div>
     );

@@ -4,7 +4,7 @@ import React from 'react';
 
 const Page = () => {
     return (
-        <div className='p-4'>
+        <div>
             <Navbar />
                 <div className='bg-blue-700 text-white flex text-xl rounded-3xl w-[425px] absolute right-0 m-5 ml-72 p-9'>
                     <h2>Mais du coup, à quoi sert LinkSpace ?</h2>
