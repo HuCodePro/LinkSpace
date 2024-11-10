@@ -11,6 +11,7 @@ import SecurityPage from './secuCompte/page';
 import NotificationPage from './notification/page';
 import SupportPage from './supportClient/page';
 import Footer from '../components/footer/footer';
+import PageContrat from './contrat/page';
 
 
 const Page = () => {
@@ -32,6 +33,8 @@ const Page = () => {
                 return <NotificationPage />;
             case 'support':
                 return <SupportPage />;
+            case 'contrat' : 
+            return <PageContrat />
             default:
                 return <p>Veuillez sélectionner une section...</p>;
         }

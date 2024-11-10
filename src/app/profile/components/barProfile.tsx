@@ -20,6 +20,12 @@ const BarProfile = ({ setSelectedSection }) => {
                     </li>
                     <li
                         className='uppercase m-5 cursor-pointer text-[#1E40AF]'
+                        onClick={() => setSelectedSection('contrat')}
+                    >
+                        Contrat(PRO)
+                    </li>
+                    <li
+                        className='uppercase m-5 cursor-pointer text-[#1E40AF]'
                         onClick={() => setSelectedSection('abonnements')}
                     >
                         Mes abonnements
