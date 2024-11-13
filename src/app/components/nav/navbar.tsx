@@ -49,10 +49,11 @@ function Navbar() {
                             )}
                         </button>
                     </div>
-                    {/* Menu desktop */}
+                    
+                    
                     <div className={`flex-1 md:flex items-center justify-center space-x-6 ${state ? 'block' : 'hidden'} md:block`}>
                         <ul className="flex justify-center items-center space-x-6">
-                            {/* Popover for 'Commencer' */}
+                            
                             <li className="text-lg text-gray-700 hover:text-blue-600 relative group">
                                 <Popover>
                                     <PopoverButton className="block text-lg font-semibold text-gray-700 hover:text-blue-600 focus:outline-none">
