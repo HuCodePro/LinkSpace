@@ -2,19 +2,7 @@
 //@ts-ignore
 
 import React, { useState } from 'react'
-import Link from 'next/link';
-
 import { Button } from "@/components/ui/button"
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuLabel,
-    DropdownMenuRadioGroup,
-    DropdownMenuRadioItem,
-    DropdownMenuItem,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
 import {
     AlertDialog,
     AlertDialogAction,
@@ -38,16 +26,80 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet"
 
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card"
-import { Progress } from "@/components/ui/progress"
-import Navbar from '@/app/components/nav/navbar';
+import Navbar from '@/app/components/nav/navbar'
+
+const myUser = {
+    id: 1,
+    firstName: "mohammed",
+    name: "Tahri",
+    email: "mohammed.tahri@gmail.com",
+    phone: "0606060606",
+    adresse: "Rue des adresses",
+    society: "Link Space",
+    accountPro : true, 
+    employees: [
+        {
+            id: 1,
+            firstName: "Alice",
+            name: "Dupont",
+            email: "alice.dupont@example.com"
+        },
+        {
+            id: 2,
+            firstName: "Bob",
+            name: "Martin",
+            email: "bob.martin@example.com"
+        },
+        {
+            id: 3,
+            firstName: "Charlie",
+            name: "Lemoine",
+            email: "charlie.lemoine@example.com"
+        },
+        {
+            id: 4,
+            firstName: "David",
+            name: "Bernard",
+            email: "david.bernard@example.com"
+        },
+        {
+            id: 5,
+            firstName: "Eva",
+            name: "Lefevre",
+            email: "eva.lefevre@example.com"
+        },
+        {
+            id: 6,
+            firstName: "Florian",
+            name: "Roux",
+            email: "florian.roux@example.com"
+        },
+        {
+            id: 7,
+            firstName: "Gabrielle",
+            name: "Garnier",
+            email: "gabrielle.garnier@example.com"
+        },
+        {
+            id: 8,
+            firstName: "Hugo",
+            name: "Faure",
+            email: "hugo.faure@example.com"
+        },
+        {
+            id: 9,
+            firstName: "Isabelle",
+            name: "Boucher",
+            email: "isabelle.boucher@example.com"
+        },
+        {
+            id: 10,
+            firstName: "Jérôme",
+            name: "Pires",
+            email: "jerome.pires@example.com"
+        },
+    ]
+}
 
 function PageInfo() {
     const [position, setPosition] = React.useState("bottom")
@@ -55,14 +107,14 @@ function PageInfo() {
 
     return (
         <div>
-
             <div className="light:bg-white light:text-white overflow-hidden shadow rounded-lg border">
                 <div className="px-4 py-5 sm:px-6">
                     <h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-white">
                         Profile
-                        <span className="bg-purple-100 text-purple-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-purple-900 m-2 dark:text-purple-300">
+                        {myUser.accountPro === true ?    <span className="bg-purple-100 text-purple-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-purple-900 m-2 dark:text-purple-300">
                             PRO
-                        </span>
+                        </span> : null}
+                     
                     </h3>
                 </div>
 
@@ -73,7 +125,7 @@ function PageInfo() {
                                 Prénom
                             </dt>
                             <dd className="mt-1 text-sm text-gray-900 dark:text-white sm:mt-0 sm:col-span-2">
-                                John
+                                {myUser.firstName}
                             </dd>
                         </div>
                         <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -81,7 +133,7 @@ function PageInfo() {
                                 Email
                             </dt>
                             <dd className="mt-1 text-sm text-gray-900 dark:text-white sm:mt-0 sm:col-span-2">
-                                john.doe@example.com
+                                {myUser.email}
                             </dd>
                         </div>
                         <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -89,7 +141,7 @@ function PageInfo() {
                                 Numéro
                             </dt>
                             <dd className="mt-1 text-sm text-gray-900 dark:text-white sm:mt-0 sm:col-span-2">
-                                +33 6 12 34 56 78
+                                {myUser.phone}
                             </dd>
                         </div>
                         <div className="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -97,7 +149,7 @@ function PageInfo() {
                                 Address
                             </dt>
                             <dd className="mt-1 text-sm text-gray-900 dark:text-white sm:mt-0 sm:col-span-2">
-                                123 Rue Exemple, Paris, France
+                                {myUser.adresse}
                             </dd>
                         </div>
 
@@ -106,7 +158,7 @@ function PageInfo() {
                                 Votre Société
                             </dt>
                             <dd className="mt-1 text-sm flex text-gray-900 dark:text-white sm:mt-0 sm:col-span-2">
-                                ExempleCorp
+                                {myUser.society}
                                 <AlertDialog>
                                     <AlertDialogTrigger>
                                         <svg
@@ -128,7 +180,7 @@ function PageInfo() {
                                         <AlertDialogHeader>
                                             <AlertDialogTitle>
                                                 Êtes-vous sûr de vouloir quitter la société
-                                                <span className="underline">ExempleCorp</span> ?
+                                                <span className="underline">{myUser.society}</span> ?
                                             </AlertDialogTitle>
                                             <AlertDialogDescription>
                                                 Cette action ne peut pas être annulée. Cela supprimera
@@ -149,7 +201,7 @@ function PageInfo() {
                                 Employés
                             </dt>
                             <dd className="mt-1 text-sm flex text-gray-900 dark:text-white sm:mt-0 sm:col-span-2">
-                                10
+                                {myUser.employees.length}
                                 <Sheet>
                                     <SheetTrigger>
                                         <svg
@@ -163,34 +215,39 @@ function PageInfo() {
                                             <path
                                                 strokeLinecap="round"
                                                 strokeLinejoin="round"
-                                                d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"
-                                            />
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                                                d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
                                             />
                                         </svg>
                                     </SheetTrigger>
-                                    <SheetContent>
+                                    <SheetContent side={position}>
                                         <SheetHeader>
-                                            <SheetTitle>Liste de mes employés</SheetTitle>
+                                            <SheetTitle>Liste des employés</SheetTitle>
                                             <SheetDescription>
-                                                Certaines actions peuvent modifier le statut de vos employés.
+                                                Vous pouvez gérer vos employés ici
                                             </SheetDescription>
-                                            <ul className="flex">
-                                                <li className="border-b-2 text-center">
-                                                    Jane Doe / jane.doe@example.com
-                                                </li>
-                                            </ul>
                                         </SheetHeader>
+                                        <div className="overflow-auto max-h-80">
+                                            {myUser.employees.map((employee) => (
+                                                <div
+                                                    key={employee.id}
+                                                    className="flex justify-between text-gray-900 dark:text-white px-4 py-2"
+                                                >
+                                                    <span>
+                                                        {employee.firstName} {employee.name}
+                                                    </span>
+                                                    <span>{employee.email}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                        <SheetFooter>
+                                            <SheetClose asChild>
+                                                <Button variant="secondary">Fermer</Button>
+                                            </SheetClose>
+                                        </SheetFooter>
                                     </SheetContent>
                                 </Sheet>
                             </dd>
                         </div>
-
-
-                        <div className="flex m-5 justify-around"></div>
                     </dl>
                 </div>
             </div>

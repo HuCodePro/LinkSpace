@@ -5,18 +5,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from "@/components/ui/dialog";
 import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { Calendar } from "@/components/ui/calendar";
 
-const CreateContract = ({ onCreate }) => {
+const CreateContract = ({ onCreate, contracts = [] }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [contractData, setContractData] = useState({
     name: "",
     price: "",
     duration: "Mensuel",
-    status: "Actif",
+    status: "En attente",
     employee: "",
-    startDate: null,
     entreprise: "",
     description: "",
   });
@@ -35,12 +32,21 @@ const CreateContract = ({ onCreate }) => {
 
   // Validation et création du contrat
   const handleCreateContract = () => {
-    if (contractData.name && contractData.price && contractData.employee && contractData.startDate) {
+    if (contractData.name && contractData.price && contractData.employee) {
       onCreate(contractData); // Appel de la fonction de création de contrat fournie en prop
       closeDialog(); // Ferme le dialog après création
     } else {
       alert("Veuillez remplir tous les champs obligatoires.");
     }
+  };
+
+  // Fonction pour suspendre un contrat existant
+  const handleSuspendContract = (contractId) => {
+    // Trouve le contrat et change son statut à "Suspendu"
+    const updatedContracts = contracts.map((contract) =>
+      contract.id === contractId ? { ...contract, status: "Suspendu" } : contract
+    );
+    onCreate(updatedContracts); // Met à jour la liste des contrats avec le nouveau statut
   };
 
   return (
@@ -68,23 +74,13 @@ const CreateContract = ({ onCreate }) => {
               value={contractData.price}
               onChange={(e) => handleChange("price", e.target.value)}
             />
-            <Select onValueChange={(value) => handleChange("duration", value)} value={contractData.duration}>
+            <Select value={contractData.duration} onValueChange={(value) => handleChange("duration", value)}>
               <SelectTrigger>
                 <SelectValue placeholder="Durée" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="Mensuel">Mensuel</SelectItem>
                 <SelectItem value="Annuel">Annuel</SelectItem>
-              </SelectContent>
-            </Select>
-            <Select onValueChange={(value) => handleChange("status", value)} value={contractData.status}>
-              <SelectTrigger>
-                <SelectValue placeholder="Statut" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="Actif">Actif</SelectItem>
-                <SelectItem value="En attente">En attente</SelectItem>
-                <SelectItem value="Suspendu">Suspendu</SelectItem>
               </SelectContent>
             </Select>
             <Input
@@ -97,26 +93,6 @@ const CreateContract = ({ onCreate }) => {
               value={contractData.entreprise}
               onChange={(e) => handleChange("entreprise", e.target.value)}
             />
-
-            {/* Sélection de la date avec le composant Calendar */}
-            <Popover>
-              <PopoverTrigger asChild>
-                <Input
-                  placeholder="Date de début"
-                  value={contractData.startDate ? contractData.startDate.toLocaleDateString() : ""}
-                  readOnly
-                  className="cursor-pointer"
-                />
-              </PopoverTrigger>
-              <PopoverContent>
-                <Calendar
-                  selected={contractData.startDate}
-                  onSelect={(date) => handleChange("startDate", date)}
-                  className="w-full"
-                />
-              </PopoverContent>
-            </Popover>
-
             <Input
               placeholder="Description du contrat"
               value={contractData.description}
@@ -125,13 +101,35 @@ const CreateContract = ({ onCreate }) => {
           </div>
 
           <DialogFooter className="space-x-4">
-            <Button  onClick={handleCreateContract}>Créer le Contrat</Button>
+            <Button onClick={handleCreateContract}>Créer le Contrat</Button>
             <DialogClose>
               <Button variant="outline" onClick={closeDialog}>Annuler</Button>
             </DialogClose>
           </DialogFooter>
         </DialogContent>
       </Dialog>
+
+      {/* Affichage des contrats sous forme de cartes */}
+      <div className="mt-8">
+        {Array.isArray(contracts) && contracts.length > 0 ? (
+          contracts.map((contract) => (
+            <div key={contract.id} className="mb-4 p-4 border rounded-md">
+              <h3 className="font-semibold">{contract.name}</h3>
+              <p>Prix: {contract.price} €</p>
+              <p>Statut: {contract.status}</p>
+              <Button
+                variant="outline"
+                onClick={() => handleSuspendContract(contract.id)}
+                disabled={contract.status === "Suspendu"}
+              >
+                Suspendre
+              </Button>
+            </div>
+          ))
+        ) : (
+          <p>Aucun contrat disponible.</p>
+        )}
+      </div>
     </>
   );
 };
